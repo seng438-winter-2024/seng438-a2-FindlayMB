@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.rules.ExpectedException;
 
+import javax.xml.crypto.Data;
 import java.security.InvalidParameterException;
 
 @DisplayName("DataUtilities Test Class")
@@ -210,6 +211,12 @@ public class DataUtilitiesTest extends DataUtilities {
     }
 
 
+    @Test
+    public void getCumulativePercentages_EmptyParam(){
+        assertEquals(0,
+                DataUtilities.getCumulativePercentages(new DefaultKeyedValues()).getItemCount(),
+                delta);
+    }
     @Test
     public void getCumulativePercentages_ForValidParams(){
         DefaultKeyedValues keyedValues = new DefaultKeyedValues();
