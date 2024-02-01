@@ -1,0 +1,29 @@
+<component name="libraryTable">
+  <library name="jmock-2.5.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/jMock/jmock-2.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/jMock/jmock-junit4-2.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/jMock/jmock-script-2.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/bsh-core-2.0b4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/cglib-nodep-2.1_3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/gnujaxp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/hamcrest-core-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/hamcrest-library-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/jcommon-1.0.0-rc1-cvs.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/jcommon-1.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/junit.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/objenesis-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/servlet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/jfreechart.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/jMock/jmock-2.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/jMock/jmock-junit4-2.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/jMock/jmock-script-2.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/cglib-2.1_3-src.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/hamcrest-core-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JFreeChart/lib/hamcrest-library-1.1.jar!/" />
+    </SOURCES>
+  </library>
+</component>
