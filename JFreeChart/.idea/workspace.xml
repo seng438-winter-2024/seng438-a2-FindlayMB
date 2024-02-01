@@ -10,9 +10,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2bhNS9h4WeCYx2xLeEJjkbzS73U" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -22,9 +22,10 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "findlay",
     "jdk.selected.JAVA_MODULE": "20",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/GitHub/seng438-a2-FindlayMB/lib/JFreeChart/jfreechart.jar",
+    "last_opened_file_path": "F:/Github/seng438-a2-FindlayMB/SENG-438-A2",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",

@@ -3,11 +3,17 @@ package org.jfree.data.test;
 
 import static org.junit.Assert.*;
 import org.jfree.data.Range;
+import org.jfree.data.Values2D;
+import org.jmock.Mockery;
 import org.junit.*;
+import org.junit.jupiter.api.TestTemplate;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 
 public class RangeTest {
     private Range exampleRange;
+    private Mockery mockingContext;
+    private Range mockRange;
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
     }
@@ -15,7 +21,9 @@ public class RangeTest {
 
     @Before
     public void setUp() throws Exception {
+        mockingContext = new Mockery();
         exampleRange = new Range(-1, 1);
+        mockRange = mockingContext.mock(Range.class);
     }
 
 
@@ -48,6 +56,7 @@ public class RangeTest {
         assertEquals("The upper bound should be 1",
                 1, exampleRange.getUpperBound(),.000000001d);
     }
+
 
     /**
      * This test tests length getter
