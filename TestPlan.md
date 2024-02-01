@@ -1,31 +1,35 @@
 
 # Range.class
 
-- getLowerBound
+- double getLowerBound()
   - Returns lower bound.  
-- getUpperBound
+- double getUpperBound()
   - Returns upper bound. 
-- getLength
+- double getLength()
   - Returns length of range, upper - lower.   
-- getCentralValue
+- double getCentralValue()
   - Returns the central (or median) value for the range.
-- contains
-- intersects
-- constrain
-- combine
-- expandToInclude
-- expand
-- shift (2 parameters)
-- shift (3 parameters)
-- equals
-- hashCode
-- toString
+- boolean contains(double value)
+- boolean intersects(double lower, double upper)
+- double constrain(double value)
+- Range combine(Range range1, Range range2)
+- Range expandToInclude(Range range, double value)
+- Range expand(Range range, double lowerMargin, double upperMargin)
+- Range shift(Range base, double delta)
+  - same as shift(base, delta, false) 
+- Range shift(Range base, double delta, boolean allowZeroCrossing) 
+- boolean equals(Object obj)
+- int hashCode()
+- String toString()
 
 
 # DataUtilities.class 
 
-- calculateColumnTotal
-- calculateRowTotal
-- createNumberArray
-- createNumberArray2D
-- getCumulativePercentages
+- double calculateColumnTotal(Values2D data, int column)
+  - Returns the sum of the values in one column of the supplied data table. With invalid input, a total of zero will be returned.
+  -
+  - Throws InvalidParameterException if data
+- double calculateRowTotal(Values2D data, int row)
+- Number[] createNumberArray(double[] data)
+- Number[][] createNumberArray2D(double[][] data)
+- KeyedValues getCumulativePercentages(KeyedValues data)
