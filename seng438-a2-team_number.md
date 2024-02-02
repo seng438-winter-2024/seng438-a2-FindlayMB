@@ -2,12 +2,12 @@
 
 **Lab. Report \#2 – Requirements-Based Test Generation**
 
-| Group \#:      |     |
-| -------------- | --- |
-| Student Names: |     |
-|                |     |
-|                |     |
-|                |     |
+| Group: 8        |
+| --------------- |
+| Jiawei He       |
+| Nicholas Garcia |
+| Sarah Qin       |
+| Findlay Brown   |
 
 # 1 Introduction
 
