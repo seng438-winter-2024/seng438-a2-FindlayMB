@@ -6,7 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="D:/GitHub/seng438-a2-FindlayMB/lib/JFreeChart/jfreechart.jar"/>
+	<classpathentry kind="lib" path="D:/GitHub/seng438-a2-FindlayMB/lib/JFreeChart/jfreechart.jar" sourcepath="lib"/>
 	<classpathentry kind="lib" path="D:/GitHub/seng438-a2-FindlayMB/lib/JFreeChart/lib/bsh-core-2.0b4.jar"/>
 	<classpathentry kind="lib" path="D:/GitHub/seng438-a2-FindlayMB/lib/JFreeChart/lib/cglib-2.1_3-src.jar"/>
 	<classpathentry kind="lib" path="D:/GitHub/seng438-a2-FindlayMB/lib/JFreeChart/lib/cglib-nodep-2.1_3.jar"/>
