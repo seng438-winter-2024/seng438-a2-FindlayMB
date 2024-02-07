@@ -1,6 +1,7 @@
 package org.jfree.data.test;
 
 import org.jfree.data.DataUtilities;
+import org.jfree.data.test.datautilities.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 

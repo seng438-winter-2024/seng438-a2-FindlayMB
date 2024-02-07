@@ -1,4 +1,4 @@
-package org.jfree.data.test;
+package org.jfree.data.test.datautilities;
 
 import org.jfree.data.DataUtilities;
 import org.jmock.Mockery;
