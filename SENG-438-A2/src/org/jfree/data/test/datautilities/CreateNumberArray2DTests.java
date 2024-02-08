@@ -1,10 +1,7 @@
 package org.jfree.data.test.datautilities;
 
 import org.jfree.data.DataUtilities;
-import org.jfree.data.Values2D;
-import org.jmock.Mockery;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
