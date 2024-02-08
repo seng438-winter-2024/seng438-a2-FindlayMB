@@ -28,7 +28,7 @@ public class RangeTest {
     }
 
 
-    // ****** next three tests cover the getCentralValue() function ******//
+    // ****** next four tests cover the getCentralValue() function ******//
     
     /**
      * This test tests if central value getter will return 0
@@ -60,7 +60,18 @@ public class RangeTest {
                 5.5, range3.getCentralValue(), .000000001d);
     }
     
-    // ****** next three tests cover the getLowerBound() function ******//
+    /**
+     * This test tests if central value getter will return an incorrect value
+     * Expected outcome: 0
+     */
+    @Test
+    public void centralValueShouldReturnCorrectValue() {
+        assertFalse("The central value of -1 and 1 should be 0, not any other value",
+                -4 == range1.getCentralValue());
+    }
+    
+    
+    // ****** next four tests cover the getLowerBound() function ******//
     
     /**
      * This test tests if lower bound getter can return a negative
@@ -92,7 +103,17 @@ public class RangeTest {
                 0, range4.getLowerBound(),.000000001d);
     }
     
-    // ****** next three tests cover the getUpperBound() function ******//
+    /**
+     * This test tests if lower bound getter will return an incorrect value
+     * Expected outcome: 0
+     */
+    @Test
+    public void getLowerBoundReturnsCorrectValue() {
+        assertFalse("The lower bound should be -1, not any other value",
+                -4 == range1.getLowerBound());
+    }
+    
+    // ****** next four tests cover the getUpperBound() function ******//
     
     /**
      * This test tests if upper bound getter can return a negative
@@ -122,6 +143,16 @@ public class RangeTest {
     public void getUpperBoundReturnsZero() {
         assertEquals("The upper bound should be -1",
                 0, range5.getUpperBound(),.000000001d);
+    }
+    
+    /**
+     * This test tests if upper bound getter will return an incorrect value
+     * Expected outcome: 0
+     */
+    @Test
+    public void getUpperBoundReturnsCorrectValue() {
+        assertFalse("The upper bound should be 1, not any other value",
+                -4 == range1.getUpperBound());
     }
 
     
