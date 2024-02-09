@@ -41,12 +41,7 @@ public class CalculateColumnTotalTests {
             }
         });
     }
-
-    /**
-     * Set up mocking of a Values2D object for a given column
-     * @param column column number to total along in a Values2D object
-     * @param outOfBoundsFlag Flag to see if column number is out of bounds
-     */
+    
     public void setUpMocking(int column,boolean outOfBoundsFlag) {
         if (!outOfBoundsFlag){
             setUpMocking(column);

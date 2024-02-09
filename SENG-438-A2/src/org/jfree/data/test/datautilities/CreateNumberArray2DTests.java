@@ -11,9 +11,6 @@ import java.util.Arrays;
 
 public class CreateNumberArray2DTests{
 
-    private final double delta = 0.000000001d;
-
-
     @Rule
     public ExpectedException exceptionRule = ExpectedException.none();
 

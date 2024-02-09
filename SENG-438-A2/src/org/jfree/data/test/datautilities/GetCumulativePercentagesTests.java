@@ -41,6 +41,9 @@ public class GetCumulativePercentagesTests{
         });
     }
 
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
+
     /**
      * Displays the key-value pairs in the KeyedValues object
      * @param kv key-value pairs stored in a KeyedValues object
@@ -50,9 +53,6 @@ public class GetCumulativePercentagesTests{
             System.out.println(key.toString()+ String.format(":%f",kv.getValue((Comparable<?>)key).doubleValue()));
         }
     }
-
-    @Rule
-    public ExpectedException exceptionRule = ExpectedException.none();
 
 
     /**

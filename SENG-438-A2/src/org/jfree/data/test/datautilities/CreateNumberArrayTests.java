@@ -1,9 +1,7 @@
 package org.jfree.data.test.datautilities;
 
 import org.jfree.data.DataUtilities;
-import org.jmock.Mockery;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -12,13 +10,6 @@ import java.security.InvalidParameterException;
 import java.util.Arrays;
 
 public class CreateNumberArrayTests{
-
-    private final double delta = 0.000000001d;
-    @Before
-    public void setUp() throws Exception {
-        // Setup
-        Mockery mockingContext = new Mockery();
-    }
 
     @Rule
     public ExpectedException exceptionRule = ExpectedException.none();

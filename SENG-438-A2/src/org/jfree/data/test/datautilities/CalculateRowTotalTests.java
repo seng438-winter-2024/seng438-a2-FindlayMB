@@ -54,7 +54,7 @@ public class CalculateRowTotalTests{
         }
         mockingContext.checking(new Expectations() {
             {
-                one(values).getRowCount(); will(returnValue(5));
+                one(values).getColumnCount(); will(returnValue(5));
                 one(values).getValue(row, 0); will(throwException(new IndexOutOfBoundsException()));
                 one(values).getValue(row, 1); will(throwException(new IndexOutOfBoundsException()));
                 one(values).getValue(row, 2); will(throwException(new IndexOutOfBoundsException()));
