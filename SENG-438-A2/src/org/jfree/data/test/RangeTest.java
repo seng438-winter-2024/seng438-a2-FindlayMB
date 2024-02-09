@@ -66,8 +66,8 @@ public class RangeTest {
      */
     @Test
     public void centralValueShouldReturnCorrectValue() {
-        assertFalse("The central value of -1 and 1 should be 0, not any other value",
-                -4 == range1.getCentralValue());
+        assertEquals("The central value of -1 and 1 should be 0, not any other value",
+                0, range1.getCentralValue(), .000000001d);
     }
     
     
@@ -109,8 +109,8 @@ public class RangeTest {
      */
     @Test
     public void getLowerBoundReturnsCorrectValue() {
-        assertFalse("The lower bound should be -1, not any other value",
-                -4 == range1.getLowerBound());
+        assertEquals("The lower bound should be -1, not any other value",
+                -1, range1.getLowerBound(), .000000001d);
     }
     
     // ****** next four tests cover the getUpperBound() function ******//
@@ -151,20 +151,21 @@ public class RangeTest {
      */
     @Test
     public void getUpperBoundReturnsCorrectValue() {
-        assertFalse("The upper bound should be 1, not any other value",
-                -4 == range1.getUpperBound());
+        assertEquals("The upper bound should be 1, not any other value",
+                1, range1.getUpperBound() ,.000000001d);
     }
 
     
-    // ****** next five tests cover the intersects() function ******//
+    // ****** next ten tests cover the intersects() function ******//
     
     /**
      * This test tests intersects function
      * with  does [1,3] intersect with [-1,1]
+     * test case: lower = UB and upper > UB
      * Expected outcome: true
      */
     @Test
-    public void intersectsTrueRightTest() {
+    public void intersectsRightEdgeForwards() {
         assertEquals("Range [1,3] does intersect [-1,1]",
         true, range1.intersects(1,3));
     }
@@ -172,10 +173,11 @@ public class RangeTest {
     /**
      * This test tests intersects function
      * with does [-3,-2] intersect with [-1,1]
+     * test case: lower < LB and upper = LB
      * Expected outcome: false
      */
     @Test
-    public void intersectsTrueLeftTest() {
+    public void intersectsLeftEdgeBackwards() {
         assertEquals("Range [-3,-1] does intersect [-1,1]",
                 true, range1.intersects(-3,-1));
     }
@@ -183,6 +185,7 @@ public class RangeTest {
     /**
      * This test tests intersects function
      * with does [2,3] intersect with [-1,1]
+     * test case: lower > UB and upper > UB
      * Expected outcome: false
      */
     @Test
@@ -194,6 +197,7 @@ public class RangeTest {
     /**
      * This test tests intersects function
      * with does [-3,-2] intersect with [-1,1]
+     * test case: lower < LB and upper < LB
      * Expected outcome: false
      */
     @Test
@@ -205,12 +209,73 @@ public class RangeTest {
     /**
      * This test tests intersects function
      * with does [2, 5] intersect with [1, 10]
-     * Expected outcome: false
+     * test case: LB < lower < UB and LB < upper < UB
+     * Expected outcome: true
      */
     @Test
     public void intersectsEncapsulation() {
-        assertEquals("Range [2, 5] does not intersect [1, 10]",
+        assertEquals("Range [2, 5] does intersect [1, 10]",
                 true, range2.intersects(2, 5));
+    }
+    
+    /**
+     * This test tests intersects function
+     * with does [1, 10] intersect with [1, 10]
+     * test case: lower = LB and upper = LB
+     * Expected outcome: true
+     */
+    @Test
+    public void intersectsSelf() {
+        assertEquals("Range [1, 10] does intersect [1, 10]",
+                true, range2.intersects(1, 10));
+    }
+    
+    /**
+     * This test tests intersects function
+     * with does [-1, 5] intersect with [1, 10]
+     * test case: lower < LB and LB < upper < UB
+     * Expected outcome: true
+     */
+    @Test
+    public void intersectsLeft() {
+        assertEquals("Range [-1, 5] does intersect [1, 10]",
+                true, range2.intersects(-1, 5));
+    }
+    
+    /**
+     * This test tests intersects function
+     * with does [1, 5] intersect with [1, 10]
+     * test case:  lower = LB and LB < upper < UB
+     * Expected outcome: true
+     */
+    @Test
+    public void intersectsLeftEdgeForward() {
+        assertEquals("Range [1, 5] does intersect [1, 10]",
+                true, range2.intersects(1, 5));
+    }
+    
+    /**
+     * This test tests intersects function
+     * with does [2, 10] intersect with [1, 10]
+     * test case: LB < lower < UB and upper = UB
+     * Expected outcome: true
+     */
+    @Test
+    public void intersectsRightEdgeBackward() {
+        assertEquals("Range [2, 10] does intersect [1, 10]",
+                true, range2.intersects(2, 10));
+    }
+    
+    /**
+     * This test tests intersects function
+     * with does [2, 11] intersect with [1, 10]
+     * test case:  lower = LB and LB < upper < UB
+     * Expected outcome: true
+     */
+    @Test
+    public void intersectsRight() {
+        assertEquals("Range [2, 11] does intersect [1, 10]",
+                true, range2.intersects(2, 11));
     }
     
     // ****** next five tests cover the constrain() function ******//
