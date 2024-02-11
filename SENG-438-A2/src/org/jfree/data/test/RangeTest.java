@@ -3,17 +3,17 @@ package org.jfree.data.test;
 
 import static org.junit.Assert.*;
 import org.jfree.data.Range;
+import org.jfree.data.Values2D;
+import org.jmock.Mockery;
 import org.junit.*;
-
-
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.TestTemplate;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 
 public class RangeTest {
     private Range exampleRange;
     private Mockery mockingContext;
     private Range mockRange;
-
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
     }
@@ -23,34 +23,7 @@ public class RangeTest {
     public void setUp() throws Exception {
         mockingContext = new Mockery();
         exampleRange = new Range(-1, 1);
-    }
-
-    
-    /*
-     *		expand function 
-     */
-    @Test 
-    public void expandTest() {
-    	Range expected = new Range(-2, 2);
-    	assertEquals("New range for exampleRange should be [-2, 2]", expected, Range.expand(range1, 0.5, 0.5));
-    }
-    
-    
-    /*
-     *		expandToInclude function - expand and include new upper bound 
-     */
-    @Test 
-    public void expandToIncludeNewUpperTest() {
-    	Range expected = new Range(-1, 2);
-    	assertEquals("New range for exampleRange should be [-1, 2]", expected, Range.expandToInclude(range1, 2));
-    }
-    
-    /*
-     *		expandToInclude function - expand and include new upper bound 
-     */
-    @Test 
-    public void expandToIncludeNewLower() {
-    	assertEquals("New range for exampleRange should be [2, 8]", range3, Range.expandToInclude(range4, 2));
+        mockRange = mockingContext.mock(Range.class);
     }
 
 
@@ -71,7 +44,7 @@ public class RangeTest {
     @Test
     public void getLowerBoundTest() {
         assertEquals("The lower bound should be -1",
-                -1, exampleRange.getLowerBound(), .000000001d);
+                -1, exampleRange.getLowerBound(),.000000001d);
     }
 
     /**
@@ -81,7 +54,7 @@ public class RangeTest {
     @Test
     public void getUpperBoundTest() {
         assertEquals("The upper bound should be 1",
-                1, exampleRange.getUpperBound(), .000000001d);
+                1, exampleRange.getUpperBound(),.000000001d);
     }
 
 
@@ -92,7 +65,7 @@ public class RangeTest {
     @Test
     public void getLengthTest() {
         assertEquals("The length should be 1 - (-1) = 2",
-                2, exampleRange.getLength(), .000000001d);
+                2, exampleRange.getLength(),.000000001d);
     }
 
 
@@ -104,7 +77,7 @@ public class RangeTest {
     @Test
     public void intersectsTrueRightTest() {
         assertEquals("Range [1,3] does intersect [-1,1]",
-                true, exampleRange.intersects(1, 3));
+        true, exampleRange.intersects(1,3));
     }
 
     /**
@@ -115,7 +88,7 @@ public class RangeTest {
     @Test
     public void intersectsTrueLeftTest() {
         assertEquals("Range [-3,-1] does intersect [-1,1]",
-                true, exampleRange.intersects(-3, -1));
+                true, exampleRange.intersects(-3,-1));
     }
 
     /**
@@ -126,7 +99,7 @@ public class RangeTest {
     @Test
     public void intersectsFalseRightTest() {
         assertEquals("Range [2,3] does not intersect [-1,1]",
-                false, exampleRange.intersects(2, 3));
+                false, exampleRange.intersects(2,3));
     }
 
     /**
@@ -137,7 +110,7 @@ public class RangeTest {
     @Test
     public void intersectsFalseLeftTest() {
         assertEquals("Range [-3,-2] does not intersect [-1,1]",
-                false, exampleRange.intersects(-3, -2));
+                false, exampleRange.intersects(-3,-2));
     }
 
 
@@ -149,7 +122,7 @@ public class RangeTest {
     @Test
     public void constrainUpperTest() {
         assertEquals("Expected 1",
-                1, exampleRange.constrain(5), .000000001d);
+                1, exampleRange.constrain(5),.000000001d);
     }
 
     /**
@@ -160,7 +133,7 @@ public class RangeTest {
     @Test
     public void constrainMiddleTest() {
         assertEquals("Expected 0",
-                0, exampleRange.constrain(0), .000000001d);
+                0, exampleRange.constrain(0),.000000001d);
     }
 
     /**
@@ -171,8 +144,12 @@ public class RangeTest {
     @Test
     public void constrainLowerTest() {
         assertEquals("Expected 1",
-                -1, exampleRange.constrain(-5), .000000001d);
+                -1, exampleRange.constrain(-5),.000000001d);
     }
+
+
+
+
 
 
     @After
