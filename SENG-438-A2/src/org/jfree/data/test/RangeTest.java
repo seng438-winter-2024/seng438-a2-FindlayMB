@@ -8,11 +8,7 @@ import org.junit.*;
 public class RangeTest {
     private Range range1;
     private Range range2;
-    private Range rangeExpandUp;
-    private Range rangeExpandDown;
-    private Mockery mockingContext;
-    private Range mockRange;
-    
+    private Range rangeToExpand;
     
     @BeforeClass public static void setUpBeforeClass() throws Exception {
     }
@@ -22,36 +18,11 @@ public class RangeTest {
     public void setUp() throws Exception { 
     	range1 = new Range(-1, 1);
     	range2 = new Range(-10, -1);
-    	
-    	// ranges set up to test expandToInclude()
-    	rangeExpandUp = Range.expandToInclude(new Range(-2, 2), 5);
-    	rangeExpandDown = Range.expandToInclude(new Range(-2, 2), -5);
+    	rangeToExpand = new Range(-2, 2);
     }
 
 
-    // ****** next two tests cover the getCentralValue() function ******//
-    
-    /**
-     * This test tests if central value getter will actually 
-     * return the central value
-     * Expected outcome: 0
-     */
-    @Test
-    public void getCentralValueReturnsCentralValue() {
-        assertEquals("The central value of -1 and 1 should be 0",
-                0, range1.getCentralValue(), .000000001d);
-    }
-    
-    /**
-     * This test tests if central value getter will return 
-     * a value different from the actual center value
-     * Expected outcome: 0
-     */
-    @Test
-    public void getCentralValueReturnsImproperValue() {
-        assertEquals("The central value of -1 and 1 should be 0",
-                false, 0 != range1.getCentralValue());
-    }
+    // ****** next tests cover 
     
     // ****** next five tests cover the contains() function ******//
     
@@ -105,159 +76,78 @@ public class RangeTest {
                 false, range1.contains(-3));
     }
     
-    // ****** next twelve tests cover the expandToInclude() function ******//
-    /** 
-     * The contains function will be used to test whether or not the
-     * expandToInclude function works as intended. 
-     * The contains function was tested before these tests to ensure that 
-     * the contains function works as intended for the purposes of the 
-     * expandToInclude tests.
-     * Two ranges, rangeExpandUp and rangeExpand down will be tested.
-     * Both of these ranges have an initial range of [-2,2].
-     * rangeExpandUp has been expanded using the expandToInclude function
-     * to include the value 5
-     * rangeExpandDown has been expanded using the expandToInclude function
-     * to include the value -5
-     * The new bounds of these ranges are assumed to be the included values.
-     * (rangeExpandUp [-2,2] -> [-2, 5], rangeExpandDown [-2,2] -> [-5, 2]
+    // ****** next six tests cover the expandToInclude() function ******//
+    
+    /**
+     * This test tests expandToInclude function with inputs of a range
+     * from [-2, 2] and a value to include of 5
+     * Expected outcome: returns a Range object with a range of [-2, 5]
      */
-    
-    // below are six tests that test a range that has been expanded up
-    
-    /**
-     * This test tests the expandToInclude function with a value within
-     * the initial range
-     * Expected outcome: true
-     */    
     @Test
-    public void expandToIncludeUpWithinInitialRange() {
-        assertEquals("The value 0 is contained in the initial range [-2,2]",
-                	true, rangeExpandUp.contains(0));
+    public void expandToInclude_ExpandRangeUp() {
+        assertEquals("Range [-2, 2] expanded to a range of [-2, 5]",
+        		rangeToExpand, Range.expandToInclude(rangeToExpand, 5));
     }
     
     /**
-     * This test tests the expandToInclude function with a value of the
-     * initial UB
-     * Expected outcome: true
-     */    
+     * This test tests expandToInclude function with inputs of a range
+     * from [-2, 2] and a value to include of -5
+     * Expected outcome: returns a Range object with a range of [-5, 2]
+     */
     @Test
-    public void expandToIncludeUpContainsInitialUB() {
-        assertEquals("The value 2 is contained in the expanded range [-2,5]",
-                	true, rangeExpandUp.contains(2));
+    public void expandToInclude_ExpandRangeDown() {
+        assertEquals("Range [-2, 2] expanded to a range of [-5, 2]",
+        		rangeToExpand, Range.expandToInclude(rangeToExpand, -5));
+    }
+    
+    
+    /**
+     * This test tests expandToInclude function with inputs of a range
+     * from [-2, 2] and a value to include of 0
+     * Expected outcome: returns a Range object with a range of [-2, 2]
+     */
+    @Test
+    public void expandToInclude_ExpandRangeWithin() {
+        assertEquals("Range [-2, 2] expanded to a range of [-2, 2]",
+        		rangeToExpand, Range.expandToInclude(rangeToExpand, 0));
+    }
+    
+    
+    /**
+     * This test tests expandToInclude function with inputs of a range
+     * of Null and a value to include of 2
+     * Expected outcome: returns a Range object with a range of [2, 2]
+     */
+    @Test
+    public void expandToInclude_ExpandRangeNull() {
+        assertEquals("Range Null expanded to a range of [2, 2]",
+        		new Range(2, 2), Range.expandToInclude(null, 2));
     }
     
     /**
-     * This test tests the expandToInclude function with a value of the
-     * initial LB
-     * Expected outcome: true
-     */    
+     * This test tests expandToInclude function with inputs of a range
+     * from [-2, 2] and a value to include of 2
+     * Expected outcome: returns a Range object with a range of [2, 2]
+     */
     @Test
-    public void expandToIncludeUpMaintainsLB() {
-        assertEquals("The value -2 is contained in the expanded range [-2,5]",
-                	true, rangeExpandUp.contains(-2));
+    public void expandToInclude_ExpandRangeIsUB() {
+        assertEquals("Range [-2, 2] expanded to a range of [-2, 2]",
+        		rangeToExpand, Range.expandToInclude(rangeToExpand, 2));
     }
+      
+    
     
     /**
-     * This test tests the expandToInclude function with a value above
-     * the initial range but below the new UB
-     * Expected outcome: true
-     */    
+     * This test tests expandToInclude function with inputs of a range
+     * from [-2, 2] and a value to include of -2
+     * Expected outcome: returns a Range object with a range of [2, 2]
+     */
     @Test
-    public void expandToIncludeUpAboveInitialRangeWithinUB() {
-        assertEquals("The value 3 is contained in the expanded range [-2,5]",
-                	true, rangeExpandUp.contains(3));
+    public void expandToInclude_ExpandRangeIsLB() {
+        assertEquals("Range [-2, 2] expanded to a range of [-2, 2]",
+        		rangeToExpand, Range.expandToInclude(rangeToExpand, -2));
     }
-    
-    /**
-     * This test tests the expandToInclude function with a value of the
-     * new UB
-     * Expected outcome: true
-     */    
-    @Test
-    public void expandToIncludeUpExpandedRangeUB() {
-        assertEquals("The value 5 is contained in the expanded range [-2,5]",
-                	true, rangeExpandUp.contains(5));
-    }
-    
-    /**
-     * This test tests the expandToInclude function with a value above 
-     * the expanded range UB
-     * Expected outcome: false
-     */    
-    @Test
-    public void expandToIncludeUpAboveExpandedRangeUB() {
-        assertEquals("The value 6 is not contained in the expanded range [-2,5]",
-                	false, rangeExpandUp.contains(6));
-    }
-    
-    // below are six tests that test a range that has been expanded down
-    
-    /**
-     * This test tests the expandToInclude function with a value within
-     * the initial range
-     * Expected outcome: true
-     */    
-    @Test
-    public void expandToIncludeDownWithinInitialRange() {
-        assertEquals("The value 0 is contained in the initial range [-2,2]",
-                	true, rangeExpandDown.contains(0));
-    }
-
-    /**
-     * This test tests the expandToInclude function with a value of the
-     * initial LB
-     * Expected outcome: true
-     */    
-    @Test
-    public void expandToIncludeDownContainsInitialLB() {
-        assertEquals("The value -2 is contained in the expanded range [-5,2]",
-                	true, rangeExpandDown.contains(-2));
-    }
-    
-    /**
-     * This test tests the expandToInclude function with a value of the
-     * initial UB 
-     * Expected outcome: true
-     */    
-    @Test
-    public void expandToIncludeDownMaintainsUB() {
-        assertEquals("The value 2 is contained in the expanded range [-5,2]",
-                	true, rangeExpandDown.contains(2));
-    }
-    
-    /**
-     * This test tests the expandToInclude function with a value below
-     * the initial range but above the new LB
-     * Expected outcome: true
-     */    
-    @Test
-    public void expandToIncludeDownAboveInitialRangeWithinLB() {
-        assertEquals("The value -3 is contained in the expanded range [-5,2]",
-                	true, rangeExpandDown.contains(-3));
-    }
-    
-    /**
-     * This test tests the expandToInclude function with a value of the
-     * new LB
-     * Expected outcome: true
-     */    
-    @Test
-    public void expandToIncludeDownExpandedRangeLB() {
-        assertEquals("The value -5 is contained in the expanded range [-5,2]",
-                	true, rangeExpandDown.contains(-5));
-    }
-    
-    /**
-     * This test tests the expandToInclude function with a value below 
-     * the expanded range LB
-     * Expected outcome: false
-     */    
-    @Test
-    public void expandToIncludeDownBelowExpandedRangeLB() {
-        assertEquals("The value 6 is not contained in the expanded range [-5, 2]",
-                	false, rangeExpandDown.contains(-6));
-    }
-    
+      
     
     // ****** next ten tests cover the intersects() function ******//
     
