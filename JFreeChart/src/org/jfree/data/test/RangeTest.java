@@ -1,9 +1,10 @@
 package org.jfree.data.test;
 
 
+import static org.junit.Assert.*;
 import org.jfree.data.Range;
-import org.jmock.Mockery;
 import org.junit.*;
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,6 +23,34 @@ public class RangeTest {
     public void setUp() throws Exception {
         mockingContext = new Mockery();
         exampleRange = new Range(-1, 1);
+    }
+
+    
+    /*
+     *		expand function 
+     */
+    @Test 
+    public void expandTest() {
+    	Range expected = new Range(-2, 2);
+    	assertEquals("New range for exampleRange should be [-2, 2]", expected, Range.expand(range1, 0.5, 0.5));
+    }
+    
+    
+    /*
+     *		expandToInclude function - expand and include new upper bound 
+     */
+    @Test 
+    public void expandToIncludeNewUpperTest() {
+    	Range expected = new Range(-1, 2);
+    	assertEquals("New range for exampleRange should be [-1, 2]", expected, Range.expandToInclude(range1, 2));
+    }
+    
+    /*
+     *		expandToInclude function - expand and include new upper bound 
+     */
+    @Test 
+    public void expandToIncludeNewLower() {
+    	assertEquals("New range for exampleRange should be [2, 8]", range3, Range.expandToInclude(range4, 2));
     }
 
 
