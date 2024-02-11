@@ -1,15 +1,16 @@
 package org.jfree.data.test;
 
-import static org.junit.Assert.*;
-
 import org.jfree.data.DataUtilities;
-import org.junit.Test;
+import org.jfree.data.test.datautilities.*;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
+@RunWith(Suite.class)
+@Suite.SuiteClasses({CalculateColumnTotalTests.class,
+        CalculateRowTotalTests.class,
+        CreateNumberArrayTests.class,
+        CreateNumberArray2DTests.class,
+        GetCumulativePercentagesTests.class})
 public class DataUtilitiesTest extends DataUtilities {
-
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 
 }
