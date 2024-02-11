@@ -9,7 +9,7 @@ import org.junit.rules.ExpectedException;
 import java.security.InvalidParameterException;
 import java.util.Arrays;
 
-public class CreateNumberArrayTests{
+public class CreateNumberArrayTests {
 
     @Rule
     public ExpectedException exceptionRule = ExpectedException.none();

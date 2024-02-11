@@ -9,19 +9,21 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
 import java.security.InvalidParameterException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-public class GetCumulativePercentagesTests{
+public class GetCumulativePercentagesTests {
     private Mockery mockingContext;
     private KeyedValues values;
 
     private final double delta = 0.000000001d;
+
     @Before
     public void setUp() {
         // Setup
@@ -29,13 +31,20 @@ public class GetCumulativePercentagesTests{
         values = mockingContext.mock(KeyedValues.class);
         mockingContext.checking(new Expectations() {
             {
-                allowing(values).getItemCount(); will(returnValue(3));
-                allowing(values).getKey(0); will(returnValue(0));
-                allowing(values).getValue(0); will(returnValue(5d));
-                allowing(values).getKey(1); will(returnValue(1));
-                allowing(values).getValue(1); will(returnValue(9d));
-                allowing(values).getKey(2); will(returnValue(2));
-                allowing(values).getValue(2); will(returnValue(2d));
+                allowing(values).getItemCount();
+                will(returnValue(3));
+                allowing(values).getKey(0);
+                will(returnValue(0));
+                allowing(values).getValue(0);
+                will(returnValue(5d));
+                allowing(values).getKey(1);
+                will(returnValue(1));
+                allowing(values).getValue(1);
+                will(returnValue(9d));
+                allowing(values).getKey(2);
+                will(returnValue(2));
+                allowing(values).getValue(2);
+                will(returnValue(2d));
 
             }
         });
@@ -46,11 +55,12 @@ public class GetCumulativePercentagesTests{
 
     /**
      * Displays the key-value pairs in the KeyedValues object
+     *
      * @param kv key-value pairs stored in a KeyedValues object
      */
-    public void displayKeyedValues(KeyedValues kv){
+    public void displayKeyedValues(KeyedValues kv) {
         for (Object key : kv.getKeys()) {
-            System.out.println(key.toString()+ String.format(":%f",kv.getValue((Comparable<?>)key).doubleValue()));
+            System.out.println(key.toString() + String.format(":%f", kv.getValue((Comparable<?>) key).doubleValue()));
         }
     }
 
@@ -76,9 +86,12 @@ public class GetCumulativePercentagesTests{
     public void validData_SingleKeyedValue() {
         mockingContext.checking(new Expectations() {
             {
-                allowing(values).getItemCount(); will(returnValue(1));
-                one(values).getValue(0); will(returnValue(1d));
-                one(values).getKey(0); will(returnValue(0));
+                allowing(values).getItemCount();
+                will(returnValue(1));
+                one(values).getValue(0);
+                will(returnValue(1d));
+                one(values).getKey(0);
+                will(returnValue(0));
             }
         });
 
@@ -146,16 +159,26 @@ public class GetCumulativePercentagesTests{
     public void validKeyedValues_StringKeys() {
         mockingContext.checking(new Expectations() {
             {
-                allowing(values).getItemCount(); will(returnValue(3));
-                allowing(values).getKey(0); will(returnValue("A"));
-                allowing(values).getValue("A"); will(returnValue(5d));
-                allowing(values).getValue(0); will(returnValue(5d));
-                allowing(values).getKey(1); will(returnValue("B"));
-                allowing(values).getValue("B"); will(returnValue(9d));
-                allowing(values).getValue(1); will(returnValue(9d));
-                allowing(values).getKey(2); will(returnValue("C"));
-                allowing(values).getValue("C"); will(returnValue(2d));
-                allowing(values).getValue(2); will(returnValue(2d));
+                allowing(values).getItemCount();
+                will(returnValue(3));
+                allowing(values).getKey(0);
+                will(returnValue("A"));
+                allowing(values).getValue("A");
+                will(returnValue(5d));
+                allowing(values).getValue(0);
+                will(returnValue(5d));
+                allowing(values).getKey(1);
+                will(returnValue("B"));
+                allowing(values).getValue("B");
+                will(returnValue(9d));
+                allowing(values).getValue(1);
+                will(returnValue(9d));
+                allowing(values).getKey(2);
+                will(returnValue("C"));
+                allowing(values).getValue("C");
+                will(returnValue(2d));
+                allowing(values).getValue(2);
+                will(returnValue(2d));
 
             }
         });
@@ -167,12 +190,12 @@ public class GetCumulativePercentagesTests{
 
         KeyedValues results = DataUtilities.getCumulativePercentages(values);
 
-        for (int i=0; i<results.getKeys().size(); ++i) {
-            System.out.println(results.getKey(i).toString()+ String.format(":%f",results.getValue(i).doubleValue()));
+        for (int i = 0; i < results.getKeys().size(); ++i) {
+            System.out.println(results.getKey(i).toString() + String.format(":%f", results.getValue(i).doubleValue()));
         }
 
         Iterator<Comparable<String>> expIter = expected.keySet().iterator();
-        for (int i=0; i<expected.keySet().size(); ++i) {
+        for (int i = 0; i < expected.keySet().size(); ++i) {
             assertEquals(expected.get(expIter.next()), results.getValue(i).doubleValue(), delta);
         }
     }
