@@ -5,65 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ad710bd-af8c-4465-af01-24fb96a1e854" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jMock.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JFreeChart.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jmock_2_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/jfree/data/test/DataUtilitiesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/jfree/data/test/DataUtilitiesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/jfree/data/test/RangeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/jfree/data/test/RangeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/.idea/libraries/jmock_2_5_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SENG-438-A2/.idea/libraries/jmock_2_5_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SENG-438-A2/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/lib/JFreeChart/jfreechart.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/lib/JFreeChart/lib/bsh-core-2.0b4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/lib/JFreeChart/lib/cglib-2.1_3-src.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/lib/JFreeChart/lib/cglib-nodep-2.1_3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/lib/JFreeChart/lib/gnujaxp.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/lib/JFreeChart/lib/hamcrest-core-1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/lib/JFreeChart/lib/hamcrest-library-1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/lib/JFreeChart/lib/jMock/jmock-2.5.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/lib/JFreeChart/lib/jMock/jmock-junit4-2.5.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/lib/JFreeChart/lib/jMock/jmock-script-2.5.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/lib/JFreeChart/lib/jcommon-1.0.0-rc1-cvs.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/lib/JFreeChart/lib/jcommon-1.0.5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/lib/JFreeChart/lib/junit.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/lib/JFreeChart/lib/objenesis-1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/lib/JFreeChart/lib/servlet.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/src/org/jfree/data/test/datautilities/CalculateColumnTotalTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SENG-438-A2/src/org/jfree/data/test/datautilities/CalculateColumnTotalTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/JFreeChart/jfreechart.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/JFreeChart/lib/bsh-core-2.0b4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/JFreeChart/lib/cglib-2.1_3-src.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/JFreeChart/lib/cglib-nodep-2.1_3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/JFreeChart/lib/gnujaxp.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/JFreeChart/lib/hamcrest-core-1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/JFreeChart/lib/hamcrest-library-1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/JFreeChart/lib/jMock/jmock-2.5.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/JFreeChart/lib/jMock/jmock-junit4-2.5.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/JFreeChart/lib/jMock/jmock-script-2.5.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/JFreeChart/lib/jcommon-1.0.0-rc1-cvs.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/JFreeChart/lib/jcommon-1.0.5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/JFreeChart/lib/junit.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/JFreeChart/lib/objenesis-1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/JFreeChart/lib/servlet.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/apiguardian-api-1.1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/junit-jupiter-5.9.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/junit-jupiter-api-5.9.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/junit-jupiter-engine-5.9.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/junit-jupiter-params-5.9.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/junit-platform-commons-1.9.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/junit-platform-engine-1.9.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lib/opentest4j-1.2.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JFreeChart.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,12 +15,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2cCclwAG59xXRbkdnjelemNiKdn" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -92,18 +37,23 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "findlay",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "20",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "F:/Github/seng438-a2-FindlayMB/JFreeChart/lib/apiguardian-api-1.1.2.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.RangeTest">
+  <component name="RunManager" selected="JUnit.DataUtilities">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="JFreeChart" />
@@ -166,11 +116,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1707619156996</updated>
-      <workItem from="1707619158044" duration="1171000" />
+      <workItem from="1707619158044" duration="2444000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
