@@ -2,13 +2,17 @@ package org.jfree.data.test;
 
 import static org.junit.Assert.*; 
 import org.jfree.data.Range; 
-import org.jmock.Mockery;
 import org.junit.*;
 
 public class RangeTest {
     private Range range1;
     private Range range2;
-    private Range rangeToExpand;
+    private Range range3;
+    private Range range4;
+    private Range range5;
+    private Range range6;
+
+    
     
     @BeforeClass public static void setUpBeforeClass() throws Exception {
     }
@@ -18,65 +22,164 @@ public class RangeTest {
     public void setUp() throws Exception { 
     	range1 = new Range(-1, 1);
     	range2 = new Range(-10, -1);
-    	rangeToExpand = new Range(-2, 2);
+    	range3 = new Range(-2, 2);
+    	range4 = new Range(-2, 0);
+    	range5 = new Range(0, 2);
+    	range6 = new Range(1, 2);
     }
 
 
-    // ****** next tests cover 
-    
-    // ****** next five tests cover the contains() function ******//
+    // ****** next eight tests cover the combine() function ****** //
     
     /**
-     * This test tests the contains function with a value within a range
+     * This test tests the combine function with a range of [-2, 0]
+     * and another range of [0, 2]
+     * Expected outcome: returns a Range object with a range of [-2, 2]
+     */
+    @Test
+    public void combine_IntersectsOnBounds() {
+        assertEquals("The range [-2, 0] is combined with [0, 2] to make a range of [-2, 2]", 
+        		range3, Range.combine(range4, range5));
+    }
+    
+    /**
+     * This test tests the combine function with a range of [-2, 0]
+     * and another range of [-1, 1]
+     * Expected outcome: returns a Range object with a range of [-2, 1]
+     */
+    @Test
+    public void combine_Range1PartiallyInRange2() {
+        assertEquals("The range [-2, 0] is combined with [-1, 1] to make a range of [-2, 1]", 
+        		new Range(-2, 1), Range.combine(range4, range1));
+    }
+    
+    /**
+     * This test tests the combine function with a range of [-1, 1]
+     * and another range of [0, 2]
+     * Expected outcome: returns a Range object with a range of [-1, 2]
+     */
+    @Test
+    public void combine_Range2PartiallyInRange1() {
+        assertEquals("The range [-1, 1] is combined with [0, 2] to make a range of [-1, 2]", 
+        		new Range(-1, 2), Range.combine(range1, range4));
+    }
+    
+    /**
+     * This test tests the combine function with a range of [-2, 0]
+     * and another range of [1, 2]
+     * Expected outcome: returns a Range object with a range of [-2, 2]
+     */
+    @Test
+    public void combine_NoIntersection() {
+        assertEquals("The range [-2, 0] is combined with [1, 2] to make a range of [-2, 2]", 
+        		range3, Range.combine(range4, range6));
+    }
+    
+    /**
+     * This test tests the combine function with a range of [-2, 2]
+     * and another range of [-1 , 1]
+     * Expected outcome: returns a Range object with a range of [-2, 2]
+     */
+    @Test
+    public void combine_Range1EncapsulatesRange2() {
+        assertEquals("The range [-2, 2] is combined with [-1, 1] to make a range of [-2, 2]", 
+        		range3, Range.combine(range3, range1));
+    }
+    
+    /**
+     * This test tests the combine function with a range of [-1, 1]
+     * and another range of [-2 , 2]
+     * Expected outcome: returns a Range object with a range of [-2, 2]
+     */
+    @Test
+    public void combine_Range2EncapsulatesRange1() {
+        assertEquals("The range [-1, 1] is combined with [-2, 2] to make a range of [-2, 2]", 
+        		range3, Range.combine(range1, range3));
+    }
+    
+    /**
+     * This test tests the combine function with a range of null
+     * and another range of [-2 , 2]
+     * Expected outcome: returns a Range object with a range of [-2, 2]
+     */
+    @Test
+    public void combine_OneRangeIsNull() {
+        assertEquals("The range null is combined with [-2, 2] to make a range of [-2, 2]", 
+        		range3, Range.combine(null, range3));
+    }
+    
+    /**
+     * This test tests the combine function with a range of null
+     * and another range of null
+     * Expected outcome: returns a Range object with a range of null
+     */
+    @Test
+    public void combine_BothRangesAreNull() {
+        assertEquals("The range null is combined with null to make a range of null", 
+        		null, Range.combine(null, null));
+    }
+    
+    // ****** most of combine function tests pass when the arguments are flipped around ****** //
+    
+    
+    // ****** next five tests cover the contains() function ****** //
+    
+    /**
+     * This test tests the contains function with an input of 0 
+     * which is within the range [-1, 1]
      * Expected outcome: true
      */
     @Test
-    public void containsWithinRange() {
+    public void contains_WithinRange() {
         assertEquals("The value 0 is contained in the range [-1,1]",
                 true, range1.contains(0));
     }
     
     /**
-     * This test tests the contains function with a value of the upper bound
+     * This test tests the contains function with an input of 1 
+     * which is the UB of the range [-1, 1]
      * Expected outcome: true
      */
     @Test
-    public void containsUpperBound() {
+    public void contains_UpperBound() {
         assertEquals("The value 1 is contained in the range [-1,1]",
                 true, range1.contains(1));
     }
     
     /**
-     * This test tests the contains function with a value of the lower bound
+     * This test tests the contains function with an input of -1
+     * which is the LB of the range [-1, 1]
      * Expected outcome: true
      */
     @Test
-    public void containsLowerBound() {
+    public void contains_LowerBound() {
         assertEquals("The value -1 is contained in the range [-1,1]",
                 true, range1.contains(-1));
     }
     
     /**
-     * This test tests the contains function with a value above the upper bound
+     * This test tests the contains function with an input of 3
+     * which is above the UB of the range [-1, 1]
      * Expected outcome: false
      */
     @Test
-    public void containsAboveUpperBound() {
+    public void contains_AboveUpperBound() {
         assertEquals("The value 3 is not contained in the range [-1,1]",
                 false, range1.contains(3));
     }
     
     /**
-     * This test tests the contains function with a value below the lower bound
+     * This test tests the contains function with an input of -3
+     * which is below the LB of the range [-1, 1]
      * Expected outcome: false
      */
     @Test
-    public void containsBelowLowerBound() {
+    public void contains_BelowLowerBound() {
         assertEquals("The value -3 is not contained in the range [-1,1",
                 false, range1.contains(-3));
     }
     
-    // ****** next six tests cover the expandToInclude() function ******//
+    // ****** next six tests cover the expandToInclude() function ****** //
     
     /**
      * This test tests expandToInclude function with inputs of a range
@@ -86,7 +189,7 @@ public class RangeTest {
     @Test
     public void expandToInclude_ExpandRangeUp() {
         assertEquals("Range [-2, 2] expanded to a range of [-2, 5]",
-        		rangeToExpand, Range.expandToInclude(rangeToExpand, 5));
+        		range3, Range.expandToInclude(range3, 5));
     }
     
     /**
@@ -97,7 +200,7 @@ public class RangeTest {
     @Test
     public void expandToInclude_ExpandRangeDown() {
         assertEquals("Range [-2, 2] expanded to a range of [-5, 2]",
-        		rangeToExpand, Range.expandToInclude(rangeToExpand, -5));
+        		range3, Range.expandToInclude(range3, -5));
     }
     
     
@@ -109,7 +212,7 @@ public class RangeTest {
     @Test
     public void expandToInclude_ExpandRangeWithin() {
         assertEquals("Range [-2, 2] expanded to a range of [-2, 2]",
-        		rangeToExpand, Range.expandToInclude(rangeToExpand, 0));
+        		range3, Range.expandToInclude(range3, 0));
     }
     
     
@@ -132,7 +235,7 @@ public class RangeTest {
     @Test
     public void expandToInclude_ExpandRangeIsUB() {
         assertEquals("Range [-2, 2] expanded to a range of [-2, 2]",
-        		rangeToExpand, Range.expandToInclude(rangeToExpand, 2));
+        		range3, Range.expandToInclude(range3, 2));
     }
       
     
@@ -145,11 +248,11 @@ public class RangeTest {
     @Test
     public void expandToInclude_ExpandRangeIsLB() {
         assertEquals("Range [-2, 2] expanded to a range of [-2, 2]",
-        		rangeToExpand, Range.expandToInclude(rangeToExpand, -2));
+        		range3, Range.expandToInclude(range3, -2));
     }
       
     
-    // ****** next ten tests cover the intersects() function ******//
+    // ****** next ten tests cover the intersects() function ****** //
     
     /**
      * This test tests intersects function
@@ -158,7 +261,7 @@ public class RangeTest {
      * Expected outcome: true
      */
     @Test
-    public void intersectsRightEdgeForwards() {
+    public void intersects_RightEdgeForwards() {
         assertEquals("Range [1,3] does intersect [-1,1]",
         true, range1.intersects(1,3));
     }
@@ -170,7 +273,7 @@ public class RangeTest {
      * Expected outcome: false
      */
     @Test
-    public void intersectsLeftEdgeBackwards() {
+    public void intersects_LeftEdgeBackwards() {
         assertEquals("Range [-3,-1] does intersect [-1,1]",
                 true, range1.intersects(-3,-1));
     }
@@ -182,7 +285,7 @@ public class RangeTest {
      * Expected outcome: false
      */
     @Test
-    public void intersectsFalseRightTest() {
+    public void intersects_FalseRightTest() {
         assertEquals("Range [2,3] does not intersect [-1,1]",
                 false, range1.intersects(2,3));
     }
@@ -194,7 +297,7 @@ public class RangeTest {
      * Expected outcome: false
      */
     @Test
-    public void intersectsFalseLeftTest() {
+    public void intersects_FalseLeftTest() {
         assertEquals("Range [-3,-2] does not intersect [-1,1]",
                 false, range1.intersects(-3,-2));
     }
@@ -206,7 +309,7 @@ public class RangeTest {
      * Expected outcome: true
      */
     @Test
-    public void intersectsEncapsulation() {
+    public void intersects_Encapsulation() {
         assertEquals("Range [2, 5] does intersect [1, 10]",
                 true, range2.intersects(2, 5));
     }
@@ -218,7 +321,7 @@ public class RangeTest {
      * Expected outcome: true
      */
     @Test
-    public void intersectsSelf() {
+    public void intersects_Self() {
         assertEquals("Range [1, 10] does intersect [1, 10]",
                 true, range2.intersects(1, 10));
     }
@@ -230,7 +333,7 @@ public class RangeTest {
      * Expected outcome: true
      */
     @Test
-    public void intersectsLeft() {
+    public void intersects_Left() {
         assertEquals("Range [-1, 5] does intersect [1, 10]",
                 true, range2.intersects(-1, 5));
     }
@@ -242,7 +345,7 @@ public class RangeTest {
      * Expected outcome: true
      */
     @Test
-    public void intersectsLeftEdgeForward() {
+    public void intersects_LeftEdgeForward() {
         assertEquals("Range [1, 5] does intersect [1, 10]",
                 true, range2.intersects(1, 5));
     }
@@ -254,7 +357,7 @@ public class RangeTest {
      * Expected outcome: true
      */
     @Test
-    public void intersectsRightEdgeBackward() {
+    public void intersects_RightEdgeBackward() {
         assertEquals("Range [2, 10] does intersect [1, 10]",
                 true, range2.intersects(2, 10));
     }
@@ -266,12 +369,12 @@ public class RangeTest {
      * Expected outcome: true
      */
     @Test
-    public void intersectsRight() {
+    public void intersects_Right() {
         assertEquals("Range [2, 11] does intersect [1, 10]",
                 true, range2.intersects(2, 11));
     }
     
-    // ****** next five tests cover the constrain() function ******//
+    // ****** next five tests cover the constrain() function ****** //
     
     /**
      * This test tests constrain function
@@ -279,7 +382,7 @@ public class RangeTest {
      * Expected outcome: 1
      */
     @Test
-    public void constrainOverRange() {
+    public void constrain_OverRange() {
         assertEquals("Expected 1",
                 1, range1.constrain(5),.000000001d);
     }
@@ -290,7 +393,7 @@ public class RangeTest {
      * Expected outcome: 0
      */
     @Test
-    public void constrainInRange() {
+    public void constrain_InRange() {
         assertEquals("Expected 0",
                 0, range1.constrain(0),.000000001d);
     }
@@ -301,7 +404,7 @@ public class RangeTest {
      * Expected outcome: -1
      */
     @Test
-    public void constrainUnderRange() {
+    public void constrain_UnderRange() {
         assertEquals("Expected 1",
                 -1, range1.constrain(-5),.000000001d);
     }
@@ -312,7 +415,7 @@ public class RangeTest {
      * Expected outcome: -1
      */
     @Test
-    public void constrainIsLowerBound() {
+    public void constrain_IsLowerBound() {
         assertEquals("Expected 1",
                 -1, range1.constrain(-1),.000000001d);
     }
@@ -323,7 +426,7 @@ public class RangeTest {
      * Expected outcome: 1
      */
     @Test
-    public void constrainIsUpperBound() {
+    public void constrain_IsUpperBound() {
         assertEquals("Expected 1",
                 1, range1.constrain(1),.000000001d);
     }
