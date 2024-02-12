@@ -34,18 +34,12 @@ public class CalculateRowTotalTests {
     public void setUpMocking(int row) {
         mockingContext.checking(new Expectations() {
             {
-                one(values).getColumnCount();
-                will(returnValue(5));
-                one(values).getValue(row, 0);
-                will(returnValue(1));
-                one(values).getValue(row, 1);
-                will(returnValue(1));
-                one(values).getValue(row, 2);
-                will(returnValue(1));
-                one(values).getValue(row, 3);
-                will(returnValue(1));
-                one(values).getValue(row, 4);
-                will(returnValue(1));
+                one(values).getColumnCount(); will(returnValue(5));
+                one(values).getValue(row, 0); will(returnValue(1));
+                one(values).getValue(row, 1); will(returnValue(1));
+                one(values).getValue(row, 2); will(returnValue(1));
+                one(values).getValue(row, 3); will(returnValue(1));
+                one(values).getValue(row, 4); will(returnValue(1));
             }
         });
     }
@@ -63,18 +57,12 @@ public class CalculateRowTotalTests {
         }
         mockingContext.checking(new Expectations() {
             {
-                one(values).getColumnCount();
-                will(returnValue(5));
-                one(values).getValue(row, 0);
-                will(throwException(new IndexOutOfBoundsException()));
-                one(values).getValue(row, 1);
-                will(throwException(new IndexOutOfBoundsException()));
-                one(values).getValue(row, 2);
-                will(throwException(new IndexOutOfBoundsException()));
-                one(values).getValue(row, 3);
-                will(throwException(new IndexOutOfBoundsException()));
-                one(values).getValue(row, 4);
-                will(throwException(new IndexOutOfBoundsException()));
+                one(values).getColumnCount(); will(returnValue(5));
+                one(values).getValue(row, 0); will(throwException(new IndexOutOfBoundsException()));
+                one(values).getValue(row, 1); will(throwException(new IndexOutOfBoundsException()));
+                one(values).getValue(row, 2); will(throwException(new IndexOutOfBoundsException()));
+                one(values).getValue(row, 3); will(throwException(new IndexOutOfBoundsException()));
+                one(values).getValue(row, 4); will(throwException(new IndexOutOfBoundsException()));
             }
         });
     }
@@ -124,7 +112,7 @@ public class CalculateRowTotalTests {
      * Expected output: 5.0
      */
     @Test
-    public void validRow_Between_LeftBoundary_Zero() {
+    public void validRow_BetweenLeftBoundaryZero() {
         setUpMocking(-2);
         double result = DataUtilities.calculateRowTotal(values, -2);
         assertEquals(5.0, result, delta);
@@ -155,7 +143,7 @@ public class CalculateRowTotalTests {
      * Expected output: 5.0
      */
     @Test
-    public void validRow_Between_Zero_RightBoundary() {
+    public void validRow_BetweenZeroRightBoundary() {
         setUpMocking(2);
         double result = DataUtilities.calculateRowTotal(values, 2);
         assertEquals(5.0, result, delta);
@@ -199,9 +187,10 @@ public class CalculateRowTotalTests {
      * this should throw an InvalidParameterException
      */
     @Test
-    public void throw_InvalidParameterException_NullData() {
+    public void nullData_ThrowInvalidParameterException() {
         exceptionRule.expect(InvalidParameterException.class);
         double result = DataUtilities.calculateRowTotal(null, 1);
+        System.out.println(result); // Shouldn't get here
     }
 
 
@@ -210,18 +199,16 @@ public class CalculateRowTotalTests {
      * this should throw an InvalidParameterException
      */
     @Test
-    public void throw_InvalidParameterException_PartialNullData() {
+    public void partialNullData_ThrowInvalidParameterException() {
         exceptionRule.expect(InvalidParameterException.class);
         mockingContext.checking(new Expectations() {
             {
-                one(values).getColumnCount();
-                will(returnValue(2));
-                one(values).getValue(0, 0);
-                will(returnValue(7.5));
-                one(values).getValue(0, 1);
-                will(returnValue(null));
+                one(values).getColumnCount(); will(returnValue(2));
+                one(values).getValue(0, 0); will(returnValue(7.5));
+                one(values).getValue(0, 1); will(returnValue(null));
             }
         });
         double result = DataUtilities.calculateColumnTotal(values, 0);
+        System.out.println(result); // Shouldn't get here
     }
 }

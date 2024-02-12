@@ -34,18 +34,12 @@ public class CalculateColumnTotalTests {
     public void setUpMocking(final int column) {
         mockingContext.checking(new Expectations() {
             {
-                one(values).getRowCount();
-                will(returnValue(5));
-                one(values).getValue(0, column);
-                will(returnValue(1));
-                one(values).getValue(1, column);
-                will(returnValue(1));
-                one(values).getValue(2, column);
-                will(returnValue(1));
-                one(values).getValue(3, column);
-                will(returnValue(1));
-                one(values).getValue(4, column);
-                will(returnValue(1));
+                one(values).getRowCount(); will(returnValue(5));
+                one(values).getValue(0, column); will(returnValue(1));
+                one(values).getValue(1, column); will(returnValue(1));
+                one(values).getValue(2, column); will(returnValue(1));
+                one(values).getValue(3, column); will(returnValue(1));
+                one(values).getValue(4, column); will(returnValue(1));
             }
         });
     }
@@ -57,18 +51,12 @@ public class CalculateColumnTotalTests {
         }
         mockingContext.checking(new Expectations() {
             {
-                one(values).getRowCount();
-                will(returnValue(5));
-                one(values).getValue(0, column);
-                will(throwException(new IndexOutOfBoundsException()));
-                one(values).getValue(1, column);
-                will(throwException(new IndexOutOfBoundsException()));
-                one(values).getValue(2, column);
-                will(throwException(new IndexOutOfBoundsException()));
-                one(values).getValue(3, column);
-                will(throwException(new IndexOutOfBoundsException()));
-                one(values).getValue(4, column);
-                will(throwException(new IndexOutOfBoundsException()));
+                one(values).getRowCount(); will(returnValue(5));
+                one(values).getValue(0, column); will(throwException(new IndexOutOfBoundsException()));
+                one(values).getValue(1, column); will(throwException(new IndexOutOfBoundsException()));
+                one(values).getValue(2, column); will(throwException(new IndexOutOfBoundsException()));
+                one(values).getValue(3, column); will(throwException(new IndexOutOfBoundsException()));
+                one(values).getValue(4, column); will(throwException(new IndexOutOfBoundsException()));
             }
         });
     }
@@ -117,7 +105,7 @@ public class CalculateColumnTotalTests {
      * Expected output: 5.0
      */
     @Test
-    public void validColumn_Between_LeftBoundary_Zero() {
+    public void validColumn_BetweenLeftBoundaryZero() {
         setUpMocking(-2);
         double result = DataUtilities.calculateColumnTotal(values, -2);
         assertEquals(5.0, result, delta);
@@ -147,7 +135,7 @@ public class CalculateColumnTotalTests {
      * Expected output: 5.0
      */
     @Test
-    public void validColumn_Between_Zero_RightBoundary() {
+    public void validColumn_BetweenZeroRightBoundary() {
         setUpMocking(2);
         double result = DataUtilities.calculateColumnTotal(values, 2);
         assertEquals(5.0, result, delta);
@@ -189,9 +177,10 @@ public class CalculateColumnTotalTests {
      * this should throw an InvalidParameterException
      */
     @Test
-    public void throw_InvalidParameterException_NullData() {
+    public void nullData_ThrowInvalidParameterException() {
         exceptionRule.expect(InvalidParameterException.class);
         double result = DataUtilities.calculateColumnTotal(null, 0);
+        System.out.println(result); // Shouldn't get here
     }
 
     /**
@@ -199,20 +188,17 @@ public class CalculateColumnTotalTests {
      * this should throw an InvalidParameterException
      */
     @Test
-    public void throw_InvalidParameterException_PartialNullData() {
+    public void partialNullData_ThrowInvalidParameterException() {
         exceptionRule.expect(InvalidParameterException.class);
         mockingContext.checking(new Expectations() {
             {
-                one(values).getRowCount();
-                will(returnValue(2));
-                one(values).getValue(0, 0);
-                will(returnValue(7.5));
-                one(values).getValue(1, 0);
-                will(returnValue(null));
+                one(values).getRowCount(); will(returnValue(2));
+                one(values).getValue(0, 0); will(returnValue(7.5));
+                one(values).getValue(1, 0); will(returnValue(null));
             }
         });
         double result = DataUtilities.calculateColumnTotal(values, 0);
+        System.out.println(result); // Shouldn't get here
     }
-
 
 }

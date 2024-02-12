@@ -79,10 +79,21 @@ public class CreateNumberArrayTests {
      * this should throw an InvalidParameterException
      */
     @Test
-    public void throw_InvalidParameterException_NullData() {
+    public void nullData_ThrowInvalidParameterException() {
         exceptionRule.expect(InvalidParameterException.class);
         Number[] result = DataUtilities.createNumberArray(null);
         System.out.println(Arrays.toString(result)); // Shouldn't get here
     }
 
+    /**
+     * Test createNumberArray with a null value inside of data
+     * this should throw an InvalidParameterException
+     * data = double[]{Double.NaN}
+     */
+    @Test
+    public void partialNullData_ThrowInvalidParameterException() {
+        exceptionRule.expect(InvalidParameterException.class);
+        Number[] result = DataUtilities.createNumberArray(new double[]{Double.NaN});
+        System.out.println(Arrays.toString(result)); // Shouldn't get here
+    }
 }

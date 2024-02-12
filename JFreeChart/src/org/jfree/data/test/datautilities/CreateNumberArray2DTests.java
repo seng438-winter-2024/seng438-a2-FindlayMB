@@ -94,7 +94,7 @@ public class CreateNumberArray2DTests {
      * this should throw an InvalidParameterException
      */
     @Test
-    public void throw_InvalidParameterException_NullData() {
+    public void nullData_ThrowInvalidParameterException() {
         exceptionRule.expect(InvalidParameterException.class);
         Number[][] result = DataUtilities.createNumberArray2D(null);
         System.out.println(Arrays.toString(result)); // Shouldn't get here
@@ -107,7 +107,7 @@ public class CreateNumberArray2DTests {
      * data = double[][]{{},{1d,2d}}
      */
     @Test
-    public void throw_InvalidParameterException_PartialNullData() {
+    public void partialNullData_ThrowInvalidParameterException() {
         exceptionRule.expect(InvalidParameterException.class);
         Number[][] result = DataUtilities.createNumberArray2D(new double[][]{{}, {1d, 2d}});
         System.out.println(Arrays.toString(result)); // Shouldn't get here

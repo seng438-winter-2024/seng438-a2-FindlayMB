@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ad710bd-af8c-4465-af01-24fb96a1e854" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/JFreeChart.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/jfree/data/test/datautilities/CreateNumberArrayTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/jfree/data/test/datautilities/CreateNumberArrayTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/jfree/data/test/datautilities/GetCumulativePercentagesTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/jfree/data/test/datautilities/GetCumulativePercentagesTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SENG-438-A2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SENG-438-A2/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +18,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -41,7 +44,7 @@
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "20",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "F:/Github/seng438-a2-FindlayMB/JFreeChart/lib/apiguardian-api-1.1.2.jar",
+    "last_opened_file_path": "D:/GitHub/seng438-a2-FindlayMB/JFreeChart",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -104,7 +107,6 @@
     <attachedChunks>
       <set>
         <option value="jdk-20.0.2-azul-20.0.2-4caba194b151-eb49e076" />
-        <option value="jdk-20.0.2-corretto-20.0.2.1-4caba194b151-5bc9ecd2" />
       </set>
     </attachedChunks>
   </component>
@@ -117,6 +119,7 @@
       <option name="presentableId" value="Default" />
       <updated>1707619156996</updated>
       <workItem from="1707619158044" duration="2444000" />
+      <workItem from="1707775847779" duration="959000" />
     </task>
     <servers />
   </component>

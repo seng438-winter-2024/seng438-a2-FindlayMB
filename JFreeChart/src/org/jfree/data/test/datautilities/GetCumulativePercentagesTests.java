@@ -31,21 +31,13 @@ public class GetCumulativePercentagesTests {
         values = mockingContext.mock(KeyedValues.class);
         mockingContext.checking(new Expectations() {
             {
-                allowing(values).getItemCount();
-                will(returnValue(3));
-                allowing(values).getKey(0);
-                will(returnValue(0));
-                allowing(values).getValue(0);
-                will(returnValue(5d));
-                allowing(values).getKey(1);
-                will(returnValue(1));
-                allowing(values).getValue(1);
-                will(returnValue(9d));
-                allowing(values).getKey(2);
-                will(returnValue(2));
-                allowing(values).getValue(2);
-                will(returnValue(2d));
-
+                allowing(values).getItemCount(); will(returnValue(3));
+                allowing(values).getKey(0); will(returnValue(0));
+                allowing(values).getValue(0); will(returnValue(5d));
+                allowing(values).getKey(1); will(returnValue(1));
+                allowing(values).getValue(1); will(returnValue(9d));
+                allowing(values).getKey(2); will(returnValue(2));
+                allowing(values).getValue(2); will(returnValue(2d));
             }
         });
     }
@@ -58,7 +50,7 @@ public class GetCumulativePercentagesTests {
      *
      * @param kv key-value pairs stored in a KeyedValues object
      */
-    public void displayKeyedValues(KeyedValues kv) {
+    private void displayKeyedValues(KeyedValues kv) {
         for (Object key : kv.getKeys()) {
             System.out.println(key.toString() + String.format(":%f", kv.getValue((Comparable<?>) key).doubleValue()));
         }
@@ -86,12 +78,9 @@ public class GetCumulativePercentagesTests {
     public void validData_SingleKeyedValue() {
         mockingContext.checking(new Expectations() {
             {
-                allowing(values).getItemCount();
-                will(returnValue(1));
-                one(values).getValue(0);
-                will(returnValue(1d));
-                one(values).getKey(0);
-                will(returnValue(0));
+                allowing(values).getItemCount(); will(returnValue(1));
+                one(values).getValue(0); will(returnValue(1d));
+                one(values).getKey(0); will(returnValue(0));
             }
         });
 
@@ -159,27 +148,16 @@ public class GetCumulativePercentagesTests {
     public void validKeyedValues_StringKeys() {
         mockingContext.checking(new Expectations() {
             {
-                allowing(values).getItemCount();
-                will(returnValue(3));
-                allowing(values).getKey(0);
-                will(returnValue("A"));
-                allowing(values).getValue("A");
-                will(returnValue(5d));
-                allowing(values).getValue(0);
-                will(returnValue(5d));
-                allowing(values).getKey(1);
-                will(returnValue("B"));
-                allowing(values).getValue("B");
-                will(returnValue(9d));
-                allowing(values).getValue(1);
-                will(returnValue(9d));
-                allowing(values).getKey(2);
-                will(returnValue("C"));
-                allowing(values).getValue("C");
-                will(returnValue(2d));
-                allowing(values).getValue(2);
-                will(returnValue(2d));
-
+                allowing(values).getItemCount(); will(returnValue(3));
+                allowing(values).getKey(0); will(returnValue("A"));
+                allowing(values).getValue("A"); will(returnValue(5d));
+                allowing(values).getValue(0); will(returnValue(5d));
+                allowing(values).getKey(1); will(returnValue("B"));
+                allowing(values).getValue("B"); will(returnValue(9d));
+                allowing(values).getValue(1); will(returnValue(9d));
+                allowing(values).getKey(2); will(returnValue("C"));
+                allowing(values).getValue("C"); will(returnValue(2d));
+                allowing(values).getValue(2); will(returnValue(2d));
             }
         });
 
@@ -206,9 +184,10 @@ public class GetCumulativePercentagesTests {
      * this should throw an InvalidParameterException
      */
     @Test
-    public void throw_InvalidParameterException_NullData() {
+    public void nullData_ThrowInvalidParameterException() {
         exceptionRule.expect(InvalidParameterException.class);
         KeyedValues result = DataUtilities.getCumulativePercentages(null);
+        displayKeyedValues(result); // Shouldn't get here
     }
 
     /**
@@ -216,8 +195,9 @@ public class GetCumulativePercentagesTests {
      * this should throw an InvalidParameterException
      */
     @Test
-    public void throw_InvalidParameterException_PartialNullData() {
+    public void partialNullData_ThrowInvalidParameterException() {
         exceptionRule.expect(InvalidParameterException.class);
         KeyedValues result = DataUtilities.getCumulativePercentages(null);
+        displayKeyedValues(result); // Shouldn't get here
     }
 }
