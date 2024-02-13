@@ -34,12 +34,18 @@ public class CalculateRowTotalTests {
     public void setUpMocking(int row) {
         mockingContext.checking(new Expectations() {
             {
-                one(values).getColumnCount(); will(returnValue(5));
-                one(values).getValue(row, 0); will(returnValue(1));
-                one(values).getValue(row, 1); will(returnValue(1));
-                one(values).getValue(row, 2); will(returnValue(1));
-                one(values).getValue(row, 3); will(returnValue(1));
-                one(values).getValue(row, 4); will(returnValue(1));
+                one(values).getColumnCount();
+                will(returnValue(5));
+                one(values).getValue(row, 0);
+                will(returnValue(1));
+                one(values).getValue(row, 1);
+                will(returnValue(1));
+                one(values).getValue(row, 2);
+                will(returnValue(1));
+                one(values).getValue(row, 3);
+                will(returnValue(1));
+                one(values).getValue(row, 4);
+                will(returnValue(1));
             }
         });
     }
@@ -57,12 +63,18 @@ public class CalculateRowTotalTests {
         }
         mockingContext.checking(new Expectations() {
             {
-                one(values).getColumnCount(); will(returnValue(5));
-                one(values).getValue(row, 0); will(throwException(new IndexOutOfBoundsException()));
-                one(values).getValue(row, 1); will(throwException(new IndexOutOfBoundsException()));
-                one(values).getValue(row, 2); will(throwException(new IndexOutOfBoundsException()));
-                one(values).getValue(row, 3); will(throwException(new IndexOutOfBoundsException()));
-                one(values).getValue(row, 4); will(throwException(new IndexOutOfBoundsException()));
+                one(values).getColumnCount();
+                will(returnValue(5));
+                one(values).getValue(row, 0);
+                will(throwException(new IndexOutOfBoundsException()));
+                one(values).getValue(row, 1);
+                will(throwException(new IndexOutOfBoundsException()));
+                one(values).getValue(row, 2);
+                will(throwException(new IndexOutOfBoundsException()));
+                one(values).getValue(row, 3);
+                will(throwException(new IndexOutOfBoundsException()));
+                one(values).getValue(row, 4);
+                will(throwException(new IndexOutOfBoundsException()));
             }
         });
     }
@@ -70,11 +82,10 @@ public class CalculateRowTotalTests {
     @Rule
     public ExpectedException exceptionRule = ExpectedException.none();
 
-
     /**
      * Testing calculateRowTotal row out of left index bounds
      * row < 1 - columnAmt
-     * Parameters:  values = 5x5 matrix filled with 1's
+     * Parameters: values = 5x5 matrix filled with 1's
      * row = -5
      * <p>
      * Expected output: 0.0
@@ -86,11 +97,10 @@ public class CalculateRowTotalTests {
         assertEquals(0.0, result, delta);
     }
 
-
     /**
      * Testing calculateRowTotal row out of left index bounds
      * row = 1 - columnAmt
-     * Parameters:  values = 5x5 matrix filled with 1's
+     * Parameters: values = 5x5 matrix filled with 1's
      * row = -4
      * <p>
      * Expected output: 5.0
@@ -102,11 +112,10 @@ public class CalculateRowTotalTests {
         assertEquals(5.0, result, delta);
     }
 
-
     /**
      * Testing calculateRowTotal row out of left index bounds
      * 1 - columnAmt < row < 0
-     * Parameters:  values = 5x5 matrix filled with 1's
+     * Parameters: values = 5x5 matrix filled with 1's
      * row = -2
      * <p>
      * Expected output: 5.0
@@ -118,10 +127,9 @@ public class CalculateRowTotalTests {
         assertEquals(5.0, result, delta);
     }
 
-
     /**
      * Testing calculateRowTotal with row = 0
-     * Parameters:  values = 5x5 matrix filled with 1's
+     * Parameters: values = 5x5 matrix filled with 1's
      * row = 0
      * <p>
      * Expected output: 5.0
@@ -133,11 +141,10 @@ public class CalculateRowTotalTests {
         assertEquals(5.0, result, delta);
     }
 
-
     /**
      * Testing calculateRowTotal row out of left index bounds
      * 0 < row < columnAmt - 1
-     * Parameters:  values = 5x5 matrix filled with 1's
+     * Parameters: values = 5x5 matrix filled with 1's
      * row = 2
      * <p>
      * Expected output: 5.0
@@ -149,11 +156,10 @@ public class CalculateRowTotalTests {
         assertEquals(5.0, result, delta);
     }
 
-
     /**
      * Testing calculateRowTotal row in upper bound
      * row = columnAmt - 1
-     * Parameters:  values = 5x5 matrix filled with 1's
+     * Parameters: values = 5x5 matrix filled with 1's
      * row = 4
      * <p>
      * Expected output: 5.0
@@ -165,11 +171,10 @@ public class CalculateRowTotalTests {
         assertEquals(5.0, result, delta);
     }
 
-
     /**
      * Testing calculateRowTotal row out of left index bounds
      * row > columnAmt - 1
-     * Parameters:  values = 5x5 matrix filled with 1's
+     * Parameters: values = 5x5 matrix filled with 1's
      * row = 5
      * <p>
      * Expected output: 0.0
@@ -180,7 +185,6 @@ public class CalculateRowTotalTests {
         double result = DataUtilities.calculateRowTotal(values, 5);
         assertEquals(0.0, result, delta);
     }
-
 
     /**
      * Test calculateRowTotal with a null value for data
@@ -193,7 +197,6 @@ public class CalculateRowTotalTests {
         System.out.println(result); // Shouldn't get here
     }
 
-
     /**
      * Test calculateRowTotal with a null value inside of data
      * this should throw an InvalidParameterException
@@ -203,9 +206,12 @@ public class CalculateRowTotalTests {
         exceptionRule.expect(InvalidParameterException.class);
         mockingContext.checking(new Expectations() {
             {
-                one(values).getColumnCount(); will(returnValue(2));
-                one(values).getValue(0, 0); will(returnValue(7.5));
-                one(values).getValue(0, 1); will(returnValue(null));
+                one(values).getColumnCount();
+                will(returnValue(2));
+                one(values).getValue(0, 0);
+                will(returnValue(7.5));
+                one(values).getValue(0, 1);
+                will(returnValue(null));
             }
         });
         double result = DataUtilities.calculateColumnTotal(values, 0);
